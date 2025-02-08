@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-import { AuthOptions } from "next-auth";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import {User} from 'next-auth';
@@ -57,7 +56,7 @@ export async function POST(request: Request) {
         );
     }
 }
-    export async function GET(request:Request) {
+    export async function GET() {
         await dbConnect();
 
         // get the user session

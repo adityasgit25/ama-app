@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {useForm} from 'react-hook-form';
-import { useDebounceValue } from 'usehooks-ts'; // changes here.
+import { useDebounceCallback } from 'usehooks-ts'; // changes here.
 import * as z from 'zod';
 import {Button} from '@/components/ui/button';
 import {
@@ -29,7 +29,7 @@ export default function SignUpForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // changes here 
-    const [debouncedUsername, setDebouncedUsername] = useDebounceValue(username, 300);
+    const debouncedUsername = useDebounceCallback(setUsername, 300);
 
     const router = useRouter();
     const {toast} = useToast();

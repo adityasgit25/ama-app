@@ -1,17 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import messages from "@/messages.json";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail } from "lucide-react";
