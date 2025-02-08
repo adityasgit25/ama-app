@@ -13,14 +13,17 @@ export const authOptions: NextAuthOptions = {
                 email: {label:'Email', type: 'text'},
                 password: {label: 'Password', type: 'password'},
             },
-            async authorize(credentials: any): Promise<any> {
+            async authorize(credentials: Record<"email" | "password", string> | undefined): Promise<any> {
+                if (!credentials) {
+                    throw new Error('No credentials provided');
+                }
                 await dbConnect();
 
                 try {
                     const user = await UserModel.findOne({
                         $or: [
-                            {email: credentials.identifier},
-                            {username: credentials.identifier},
+                            {email: credentials.email},
+                            {username: credentials.email},
                         ],
                     });
                     if (!user) {
